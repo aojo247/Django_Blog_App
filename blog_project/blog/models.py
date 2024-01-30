@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 """
 At the top we’re importing the class models and then creating a subclass of models.Model
 called Post. Using this subclass functionality we automatically have access to everything
@@ -25,3 +26,6 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('post_detail', args=[str(self.id)])
